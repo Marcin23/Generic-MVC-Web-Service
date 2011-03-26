@@ -59,14 +59,14 @@ public class AddUser {
             System.out.print(test.getPassword());
 
             String email = test.getEmailID();
-            String pwd1 = EntityBase.generateNewID();
+            String pwd1 = test.getPassword();
             System.out.print(pwd1);
 
             User u = new User();
-            //u.createNewID();
-            u.setEntityId(EntityBase.generateNewID());
-            u.setEntityAccessStatus("1");
-            u.setTypeId(0);
+            u.createNewID();
+//            u.setEntityId(EntityBase.generateNewID());
+//            u.setEntityAccessStatus("1");
+//            u.setTypeId(0);
             u.setEmail(test.getEmailID());
             u.setFirstName(test.getLastName());
             u.setLastName(test.getFirstName());
@@ -79,7 +79,7 @@ public class AddUser {
                 Logger.getLogger(AddUser.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                u.save();
+                u.save(true);
             } catch(Exception e){
                 System.err.print(e);
                 throw e;
